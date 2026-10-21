@@ -1,6 +1,8 @@
 package com.example.mypantry;
 
 import android.content.Context;
+import android.database.Cursor;
+import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -34,7 +36,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        //1. create the pantry table
+        //create the pantry table
         String createPantryTable = "CREATE TABLE " + TABLE_PANTRY + " (" +
                 COLUMN_PANTRY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 COLUMN_PANTRY_NAME + " TEXT NOT NULL, " +
@@ -52,10 +54,54 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(createRecipeTable);
     }
 
+    //onUpgrade method
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_PANTRY);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_RECIPES);
         onCreate(db);
+    }
+
+    //CRUD operations (PANTRY ITEMS)
+
+    //create
+    public boolean addPantryItem(String name, double quantity, String unit, String expiryDate) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        //content values stores column/value pairs before insertion
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_PANTRY_NAME, name);
+        values.put(COLUMN_PANTRY_QTY, quantity);
+        values.put(COLUMN_PANTRY_UNIT, unit);
+        values.put(COLUMN_PANTRY_EXPIRY, expiryDate);
+
+        long result = db.insert(TABLE_PANTRY, null, values);
+        return result != -1; // will return true if successful
+    }
+
+    //read
+    public Cursor getAllPantryItems() {
+        // a cursor holds the results of a query and lets the application move through the returned rows one at a time
+        SQLiteDatabase db = this.getReadableDatabase();
+        return db.rawQuery("SELECT * FROM " + TABLE_PANTRY, null);
+    }
+
+    //update
+    public boolean updatePantryItem(int id, String name, double quantity, String unit, String expiryDate) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_PANTRY_NAME, name);
+        values.put(COLUMN_PANTRY_QTY, quantity);
+        values.put(COLUMN_PANTRY_UNIT, unit);
+        values.put(COLUMN_PANTRY_EXPIRY, expiryDate);
+
+        int rowsAffected = db.update(TABLE_PANTRY, values, COLUMN_PANTRY_ID + " = ?", new String[]{String.valueOf(id)});
+        return rowsAffected > 0;
+    }
+
+    //delete
+    public boolean deletePantryItem(int id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        int rowsAffected = db.delete(TABLE_PANTRY, COLUMN_PANTRY_ID + " = ?", new String[]{String.valueOf(id)});
+        return rowsAffected > 0;
     }
 }
