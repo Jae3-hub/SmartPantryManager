@@ -1,5 +1,8 @@
 package com.example.mypantry;
 
+//GIT COMMIT
+//"Create UI for all and suggested recipes, implement matching functionality"
+
 //imports
 import android.content.Intent;
 import android.database.Cursor;
@@ -46,8 +49,8 @@ public class MainActivity extends AppCompatActivity {
 
         //button to view suggested recipes (opens suggested recipes screen)
         btnViewRecipes.setOnClickListener(v -> {
-            // We will create SuggestedRecipesActivity next
-            Toast.makeText(this, "Suggested Recipes screen coming up next!", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(MainActivity.this, SuggestedRecipesActivity.class);
+            startActivity(intent);
         });
     }
 

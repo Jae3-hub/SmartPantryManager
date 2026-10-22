@@ -12,6 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyPantry">
         <activity android:name=".AddEditIngredientActivity" android:exported="false" />
+        <activity android:name=".SuggestedRecipesActivity" android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
