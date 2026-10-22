@@ -40,8 +40,8 @@ public class MainActivity extends AppCompatActivity {
 
         //floating button to add new ingredient (opens ingredient screen)
         fabAddIngredient.setOnClickListener(v -> {
-            // We will create AddEditIngredientActivity next
-            Toast.makeText(this, "Add Ingredient screen coming up next!", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(MainActivity.this, AddEditIngredientActivity.class);
+            startActivity(intent);
         });
 
         //button to view suggested recipes (opens suggested recipes screen)
