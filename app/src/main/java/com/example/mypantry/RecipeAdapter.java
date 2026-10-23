@@ -30,15 +30,45 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
         return new RecipeViewHolder(view);
     }
 
-    @Override
-    public void onBindViewHolder(@NonNull RecipeViewHolder holder, int position) {
         //fetches the specific recipe object based on its position in the list
-        RecipeModel recipe = recipeList.get(position);
-
         //set the data inside the row card
-        holder.textName.setText(recipe.getName());
-        holder.textIngredients.setText("Required: " + recipe.getIngredientsFormatted());
-    }
+        @Override
+        public void onBindViewHolder(@NonNull RecipeViewHolder holder, int position) {
+
+            //fetches the specific recipe object based on its position in the list
+            RecipeModel recipe = recipeList.get(position);
+
+            //set the data inside the row card
+            holder.textName.setText(recipe.getName());
+
+            //format ingredients so each one appears on a separate line
+            String ingredients = recipe.getIngredientsFormatted();
+
+            if (ingredients != null && !ingredients.trim().isEmpty()) {
+
+                //split the ingredients wherever a comma separates them
+                String[] ingredientList = ingredients.split("\\s*,\\s*");
+                StringBuilder formattedIngredients = new StringBuilder();
+
+                for (String ingredient : ingredientList) {
+                    String item = ingredient.trim();
+
+                    if (!item.isEmpty()) {
+                        if (formattedIngredients.length() > 0) {
+                            formattedIngredients.append("\n");
+                        }
+
+                        formattedIngredients.append("• ").append(item);
+                    }
+                }
+
+                //display the formatted ingredients
+                holder.textIngredients.setText(formattedIngredients.toString());
+
+            } else {
+                holder.textIngredients.setText("No ingredients listed");
+            }
+        }
 
     @Override
     public int getItemCount() {

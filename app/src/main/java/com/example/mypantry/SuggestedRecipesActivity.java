@@ -3,6 +3,7 @@ package com.example.mypantry;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -37,6 +38,11 @@ public class SuggestedRecipesActivity extends AppCompatActivity {
 
         //load the suggested recipes only
         loadSuggestedRecipes();
+
+        //button to return to the pantry items page
+        Button btnBackToPantry = findViewById(R.id.btnBackToPantry);
+
+        btnBackToPantry.setOnClickListener(v -> finish());
     }
 
     //fetches data, runs the matching algorithm and updates the UI

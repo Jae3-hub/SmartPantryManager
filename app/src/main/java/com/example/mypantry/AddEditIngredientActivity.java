@@ -21,7 +21,7 @@ public class AddEditIngredientActivity extends AppCompatActivity{
 
         //get XML elements
         editName = findViewById(R.id.editIngredientName);
-        editQty = findViewById(R.id.editIngredientQty);
+        editQty = findViewById(R.id.editIngredientQuantity);
         editUnit = findViewById(R.id.editIngredientUnit);
         editExpiry = findViewById(R.id.editIngredientExpiry);
         btnSave = findViewById(R.id.btnSaveIngredient);

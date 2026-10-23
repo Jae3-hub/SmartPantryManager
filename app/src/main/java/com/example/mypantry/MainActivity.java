@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerViewPantry;
     private PantryAdapter pantryAdapter;
     private Button btnViewRecipes;
+
     private FloatingActionButton fabAddIngredient;
 
     @Override
@@ -46,9 +47,13 @@ public class MainActivity extends AppCompatActivity {
 
         //button to view suggested recipes (opens suggested recipes screen)
         btnViewRecipes.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, SuggestedRecipesActivity.class);
+            Intent intent = new Intent(
+                    MainActivity.this,
+                    SuggestedRecipesActivity.class
+            );
             startActivity(intent);
         });
+
     }
 
     //helper method to fetch cursor data and attach or update the adapter

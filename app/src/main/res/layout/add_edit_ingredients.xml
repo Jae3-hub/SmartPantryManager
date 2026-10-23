@@ -1,64 +1,181 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:background="@android:color/white"
     android:padding="24dp"
-    android:gravity="center_horizontal">
+    tools:context=".MainActivity">
 
+    <!--main heading for adding or editing an ingredient-->
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/textAddEditTitle"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Add Pantry Ingredient"
-        android:textSize="24sp"
+        android:text="Add Ingredient"
+        android:textSize="26sp"
         android:textStyle="bold"
-        android:textColor="@android:color/black"
-        android:layout_marginBottom="24dp"/>
+        android:textColor="#245C43"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
-    <!--ingredient name-->
+    <!--short description of the form-->
+    <TextView
+        android:id="@+id/textAddEditSubtitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Keep track of the ingredients in your pantry."
+        android:textSize="14sp"
+        android:textColor="#6B7D72"
+        android:layout_marginTop="6dp"
+        android:layout_marginBottom="28dp"
+        app:layout_constraintTop_toBottomOf="@id/textAddEditTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!--ingredient name input-->
+    <TextView
+        android:id="@+id/labelIngredientName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Ingredient name"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:textColor="#245C43"
+        android:layout_marginBottom="6dp"
+        app:layout_constraintTop_toBottomOf="@id/textAddEditSubtitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
     <EditText
         android:id="@+id/editIngredientName"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Ingredient Name (e.g., tomato)"
-        android:inputType="textPersonName"
-        android:layout_marginBottom="16dp"/>
+        android:minHeight="52dp"
+        android:hint="e.g. Tomatoes"
+        android:inputType="textCapWords"
+        android:singleLine="true"
+        android:padding="14dp"
+        android:textColor="#24352B"
+        android:textColorHint="#89968D"
+        android:backgroundTint="#8CBF9F"
+        app:layout_constraintTop_toBottomOf="@id/labelIngredientName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
-    <!--quantity-->
+    <!--quantity input-->
+    <TextView
+        android:id="@+id/labelIngredientQuantity"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Quantity"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:textColor="#245C43"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="6dp"
+        app:layout_constraintTop_toBottomOf="@id/editIngredientName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
     <EditText
-        android:id="@+id/editIngredientQty"
-        android:layout_width="match_parent"
+        android:id="@+id/editIngredientQuantity"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Quantity (e.g., 3)"
+        android:minHeight="52dp"
+        android:hint="e.g. 2"
         android:inputType="numberDecimal"
-        android:layout_marginBottom="16dp"/>
+        android:singleLine="true"
+        android:padding="14dp"
+        android:textColor="#24352B"
+        android:textColorHint="#89968D"
+        android:backgroundTint="#8CBF9F"
+        app:layout_constraintTop_toBottomOf="@id/labelIngredientQuantity"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
-    <!--unit-->
+    <!--quantity unit input-->
+    <TextView
+        android:id="@+id/labelIngredientUnit"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Unit"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:textColor="#245C43"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="6dp"
+        app:layout_constraintTop_toBottomOf="@id/editIngredientQuantity"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
     <EditText
         android:id="@+id/editIngredientUnit"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Unit (e.g., pieces, g, ml, tbsp)"
+        android:minHeight="52dp"
+        android:hint="e.g. kg, pieces, litres"
         android:inputType="text"
-        android:layout_marginBottom="16dp"/>
+        android:singleLine="true"
+        android:padding="14dp"
+        android:textColor="#24352B"
+        android:textColorHint="#89968D"
+        android:backgroundTint="#8CBF9F"
+        app:layout_constraintTop_toBottomOf="@id/labelIngredientUnit"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
-    <!--expiry date-->
+    <!--expiry date input-->
+    <TextView
+        android:id="@+id/labelIngredientExpiry"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Expiry date (optional)"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:textColor="#245C43"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="6dp"
+        app:layout_constraintTop_toBottomOf="@id/editIngredientUnit"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
     <EditText
         android:id="@+id/editIngredientExpiry"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Expiry Date (Optional, e.g., 2026-11-01)"
+        android:minHeight="52dp"
+        android:hint="YYYY-MM-DD"
         android:inputType="date"
-        android:layout_marginBottom="24dp"/>
+        android:singleLine="true"
+        android:padding="14dp"
+        android:textColor="#24352B"
+        android:textColorHint="#89968D"
+        android:backgroundTint="#8CBF9F"
+        app:layout_constraintTop_toBottomOf="@id/labelIngredientExpiry"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
-    <!--save button-->
+    <!--button to save the ingredient-->
     <Button
         android:id="@+id/btnSaveIngredient"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Save Changes"
-        android:backgroundTint="@android:color/holo_green_dark"
-        android:textColor="@android:color/white"/>
+        android:minHeight="52dp"
+        android:text="Save Ingredient"
+        android:textAllCaps="false"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/white"
+        android:backgroundTint="#2E7D52"
+        android:layout_marginTop="24dp"
+        app:cornerRadius="12dp"
+        app:layout_constraintTop_toBottomOf="@id/editIngredientExpiry"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
