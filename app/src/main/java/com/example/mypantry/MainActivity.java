@@ -1,8 +1,5 @@
 package com.example.mypantry;
 
-//GIT COMMIT
-//"Create UI for all and suggested recipes, implement matching functionality"
-
 //imports
 import android.content.Intent;
 import android.database.Cursor;
