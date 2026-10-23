@@ -1,68 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="20dp">
+    android:background="#F5F7F6"
+    android:padding="16dp">
 
-    <LinearLayout
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        app:cardBackgroundColor="@android:color/white"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="3dp"
+        android:layout_margin="4dp">
 
-        <!-- Recipe Title -->
-        <TextView
-            android:id="@+id/textDetailRecipeName"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:textColor="@android:color/black"
-            android:layout_marginBottom="16dp"/>
+            android:orientation="vertical"
+            android:padding="20dp"
+            android:background="@android:color/white">
 
-        <!-- Required Ingredients Header -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Required Ingredients:"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:layout_marginBottom="8dp"/>
+            <!-- Recipe Title -->
+            <TextView
+                android:id="@+id/textDetailRecipeName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Recipe Name"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:textColor="#245C43"
+                android:fontFamily="sans-serif"
+                android:layout_marginBottom="16dp"/>
 
-        <!-- Ingredients List -->
-        <TextView
-            android:id="@+id/textDetailIngredients"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="16sp"
-            android:textColor="@android:color/darker_gray"
-            android:layout_marginBottom="24dp"/>
+            <!-- Required Ingredients Header -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Required Ingredients"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="#2E7D52"
+                android:layout_marginBottom="8dp"/>
 
-        <!-- Step-by-Step Instructions Header -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Step-by-Step Instructions:"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:layout_marginBottom="8dp"/>
+            <!-- Ingredients List -->
+            <TextView
+                android:id="@+id/textDetailIngredients"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:textColor="#43564A"
+                android:lineSpacingExtra="6dp"
+                android:paddingStart="4dp"
+                android:paddingEnd="4dp"
+                android:layout_marginBottom="20dp"/>
 
-        <!-- Steps Content -->
-        <TextView
-            android:id="@+id/textDetailSteps"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="16sp"
-            android:textColor="@android:color/black"
-            android:lineSpacingExtra="4dp"
-            android:layout_marginBottom="24dp"/>
+            <!-- Step-by-Step Instructions Header -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Step-by-Step Instructions"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="#2E7D52"
+                android:layout_marginBottom="8dp"/>
 
-        <!-- Back Button -->
-        <Button
-            android:id="@+id/btnBackToRecipes"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Back to Suggestions"/>
+            <!-- Steps Content -->
+            <TextView
+                android:id="@+id/textDetailSteps"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:textColor="#43564A"
+                android:lineSpacingExtra="6dp"
+                android:paddingStart="4dp"
+                android:paddingEnd="4dp"
+                android:layout_marginBottom="24dp"/>
 
-    </LinearLayout>
+            <!-- Back Button -->
+            <Button
+                android:id="@+id/btnBackToRecipes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Back to Suggestions"
+                android:backgroundTint="#245C43"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
+                android:padding="12dp"/>
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
 </ScrollView>

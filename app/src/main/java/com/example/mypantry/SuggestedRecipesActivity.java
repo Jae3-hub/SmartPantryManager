@@ -97,7 +97,14 @@ public class SuggestedRecipesActivity extends AppCompatActivity {
 
             //initialize the adapter if it's null, or update the existing adapter with fresh matches
             if (recipeAdapter == null) {
-                recipeAdapter = new RecipeAdapter(this, matchedRecipes);
+                recipeAdapter = new RecipeAdapter(this, matchedRecipes, recipe -> {
+                    // Open RecipeDetailActivity and pass recipe details via Intent
+                    android.content.Intent intent = new android.content.Intent(SuggestedRecipesActivity.this, RecipeDetailActivity.class);
+                    intent.putExtra(RecipeDetailActivity.EXTRA_RECIPE_NAME, recipe.getName());
+                    intent.putExtra(RecipeDetailActivity.EXTRA_RECIPE_INGREDIENTS, recipe.getIngredientsFormatted());
+                    intent.putExtra(RecipeDetailActivity.EXTRA_RECIPE_STEPS, recipe.getSteps());
+                    startActivity(intent);
+                });
                 recyclerViewSuggested.setAdapter(recipeAdapter);
             } else {
                 recipeAdapter.updateList(matchedRecipes);
