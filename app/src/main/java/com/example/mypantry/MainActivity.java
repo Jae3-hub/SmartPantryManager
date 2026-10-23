@@ -59,24 +59,58 @@ public class MainActivity extends AppCompatActivity {
     //helper method to fetch cursor data and attach or update the adapter
     private void loadPantryData() {
         Cursor cursor = databaseHelper.getAllPantryItems();
+
         if (pantryAdapter == null) {
-            //instantiate the adapter and define the delete logic
-            pantryAdapter = new PantryAdapter(this, cursor, id -> {
-                //delete item
-                boolean success = databaseHelper.deletePantryItem(id);
-                if (success) {
-                    Toast.makeText(MainActivity.this, "Item deleted", Toast.LENGTH_SHORT).show();
-                    loadPantryData(); // Refresh list
-                } else {
-                    Toast.makeText(MainActivity.this, "Error deleting item", Toast.LENGTH_SHORT).show();
-                }
-            });
+            pantryAdapter = new PantryAdapter(
+                    this,
+                    cursor,
+                    new PantryAdapter.OnItemClickListener() {
+
+                        @Override
+                        public void onEditClick(int id) {
+                            //open the form for the selected ingredient.
+                            android.content.Intent intent =
+                                    new android.content.Intent(
+                                            MainActivity.this,
+                                            AddEditIngredientActivity.class);
+
+                            intent.putExtra(
+                                    AddEditIngredientActivity.EXTRA_PANTRY_ID,
+                                    id);
+
+                            startActivity(intent);
+                        }
+
+                        @Override
+                        public void onDeleteClick(int id) {
+                            boolean success =
+                                    databaseHelper.deletePantryItem(id);
+
+                            if (success) {
+                                Toast.makeText(
+                                        MainActivity.this,
+                                        "Item deleted",
+                                        Toast.LENGTH_SHORT
+                                ).show();
+
+                                loadPantryData();
+                            } else {
+                                Toast.makeText(
+                                        MainActivity.this,
+                                        "Error deleting item",
+                                        Toast.LENGTH_SHORT
+                                ).show();
+                            }
+                        }
+                    });
+
             recyclerViewPantry.setAdapter(pantryAdapter);
+
         } else {
-            //swapping the cursor if it already exists avoids memory leaks
             pantryAdapter.swapCursor(cursor);
         }
     }
+
 
     @Override
     protected void onResume() {

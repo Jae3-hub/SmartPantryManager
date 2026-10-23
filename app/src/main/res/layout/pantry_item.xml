@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- this sets out how each pantry item will look-->
 
-<!--card view wraps each row item to give it a clean look with a shadowed card appearance-->
+<!-- Card displaying an individual pantry item -->
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -13,6 +12,7 @@
     app:cardCornerRadius="14dp"
     app:cardElevation="3dp">
 
+    <!-- Main horizontal layout -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -21,7 +21,7 @@
         android:gravity="center_vertical"
         android:background="@android:color/white">
 
-        <!--left side: vertical layout for ingredient name and other info-->
+        <!-- Left side: ingredient name and details -->
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -36,7 +36,7 @@
                 android:text="Ingredient Name"
                 android:textSize="17sp"
                 android:textStyle="bold"
-                android:textColor="#245C43"/>
+                android:textColor="#245C43" />
 
             <TextView
                 android:id="@+id/textIngredientDetails"
@@ -45,23 +45,42 @@
                 android:text="Qty: 0 unit | Expiry: None"
                 android:textSize="13sp"
                 android:textColor="#65776B"
-                android:layout_marginTop="5dp"/>
+                android:layout_marginTop="5dp" />
 
         </LinearLayout>
 
-        <!--right side: delete button -->
-        <Button
-            android:id="@+id/btnDeletePantry"
-            style="?android:attr/buttonStyleSmall"
+        <!-- Right side: Edit and Delete buttons -->
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:minHeight="40dp"
-            android:minWidth="72dp"
-            android:text="Delete"
-            android:textAllCaps="false"
-            android:textStyle="bold"
-            android:textColor="#245C43"
-            android:backgroundTint="#DDEFE2"/>
+            android:orientation="vertical"
+            android:gravity="center"
+            android:paddingStart="4dp">
+
+            <Button
+                android:id="@+id/btnEditPantry"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="100dp"
+                android:layout_height="48dp"
+                android:text="Edit"
+                android:textAllCaps="false"
+                android:textStyle="bold"
+                android:textColor="#245C43"
+                android:backgroundTint="#DDEFE2" />
+
+            <Button
+                android:id="@+id/btnDeletePantry"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="100dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="4dp"
+                android:text="Delete"
+                android:textAllCaps="false"
+                android:textStyle="bold"
+                android:textColor="#245C43"
+                android:backgroundTint="#DDEFE2" />
+
+        </LinearLayout>
 
     </LinearLayout>
 

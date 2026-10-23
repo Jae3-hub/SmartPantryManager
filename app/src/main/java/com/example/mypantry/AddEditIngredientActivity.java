@@ -7,6 +7,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class AddEditIngredientActivity extends AppCompatActivity{
+    public static final String EXTRA_PANTRY_ID = "pantry_item_id";
     private EditText editName, editQty, editUnit, editExpiry;
     private Button btnSave;
     private DatabaseHelper databaseHelper;
